@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonTableViewCell" rowHeight="75" id="KGk-i7-Jjw" customClass="PokemonTableViewCell" customModule="TestPokemonTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="354" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pi0-qn-LMu">
+                        <rect key="frame" x="4" y="4" width="346" height="67"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PR1-Pa-fYa">
+                                <rect key="frame" x="14" y="14" width="60" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="JG1-3d-WMS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlC-IQ-AWA">
+                                <rect key="frame" x="88" y="23" width="41.333333333333343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstItem="PR1-Pa-fYa" firstAttribute="leading" secondItem="Pi0-qn-LMu" secondAttribute="leading" constant="14" id="3sK-96-kCG"/>
+                            <constraint firstItem="PR1-Pa-fYa" firstAttribute="top" secondItem="Pi0-qn-LMu" secondAttribute="top" constant="14" id="48r-lw-KY4"/>
+                            <constraint firstItem="PR1-Pa-fYa" firstAttribute="centerY" secondItem="Pi0-qn-LMu" secondAttribute="centerY" id="5h6-K6-hVZ"/>
+                            <constraint firstItem="VlC-IQ-AWA" firstAttribute="centerY" secondItem="PR1-Pa-fYa" secondAttribute="centerY" id="8nG-Nh-gnc"/>
+                            <constraint firstAttribute="bottom" secondItem="PR1-Pa-fYa" secondAttribute="bottom" constant="14" id="8v5-FH-slL"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VlC-IQ-AWA" secondAttribute="trailing" constant="14" id="NvM-fS-b3p"/>
+                            <constraint firstItem="VlC-IQ-AWA" firstAttribute="leading" secondItem="PR1-Pa-fYa" secondAttribute="trailing" constant="14" id="kzj-9a-wht"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Pi0-qn-LMu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="7tG-1F-4ij"/>
+                    <constraint firstAttribute="bottom" secondItem="Pi0-qn-LMu" secondAttribute="bottom" constant="4" id="EUx-zr-K4D"/>
+                    <constraint firstAttribute="trailing" secondItem="Pi0-qn-LMu" secondAttribute="trailing" constant="4" id="TUq-Lf-vzZ"/>
+                    <constraint firstItem="Pi0-qn-LMu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XpU-V2-5cN"/>
+                    <constraint firstItem="Pi0-qn-LMu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="mIl-tq-ALp"/>
+                    <constraint firstItem="Pi0-qn-LMu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vEc-re-6r1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellContentView" destination="H2p-sc-9uM" id="Tjf-z1-mbq"/>
+                <outlet property="nameLabel" destination="VlC-IQ-AWA" id="hcC-XZ-P9T"/>
+                <outlet property="pokemonImage" destination="PR1-Pa-fYa" id="P4i-eR-Kfh"/>
+            </connections>
+            <point key="canvasLocation" x="-363.35877862595419" y="-3.1690140845070425"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
