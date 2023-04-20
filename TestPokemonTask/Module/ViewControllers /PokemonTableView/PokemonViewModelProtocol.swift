@@ -11,6 +11,6 @@ protocol PokemonViewModelProtocol {
     var delegate: PokemonViewModelDelegate? { get set }
     var pokemonEntites: PokemonResult? { get set }
     var getPokemonCount: Int { get }
-    func getUrlForDitails(for path: Int) -> String
+    func getUrlForDetails(for path: Int) -> String
     func getAllPokemon()
 }

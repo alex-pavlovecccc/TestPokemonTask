@@ -36,7 +36,7 @@ final class NetworkingService {
         }
     }
     
-    func getDitailDataWithUrl(url: String?, complition: @escaping(Result<PokemonDitails, ResponseError>) -> Void) {
+    func getDetailDataWithUrl(url: String?, complition: @escaping(Result<PokemonDetails, ResponseError>) -> Void) {
         guard let urlString = url else { return }
         
         let url = URL(string: urlString)
@@ -48,15 +48,15 @@ final class NetworkingService {
             return
         }
         
-        dataTaskWithURL(model: PokemonDitails.self, url: url) { result in
+        dataTaskWithURL(model: PokemonDetails.self, url: url) { result in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
                     complition(.failure(error))
                 }
-            case .success(let pokemenDitails):
+            case .success(let pokemenDetails):
                 DispatchQueue.main.async {
-                    complition(.success(pokemenDitails))
+                    complition(.success(pokemenDetails))
                 }
             }
         }

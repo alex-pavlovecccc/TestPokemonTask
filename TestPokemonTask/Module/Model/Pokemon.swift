@@ -16,7 +16,7 @@ struct PokemonEntity: Codable {
 }
 
 
-struct PokemonDitails: Codable {
+struct PokemonDetails: Codable {
     let height: Int
     let name: String
     let sprites: Sprites

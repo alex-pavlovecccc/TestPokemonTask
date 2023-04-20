@@ -31,7 +31,7 @@ class PokemonViewModel: PokemonViewModelProtocol {
     }
     
     //MARK: - methods
-    func getUrlForDitails(for path: Int) -> String {
+    func getUrlForDetails(for path: Int) -> String {
         guard let url = pokemonEntites?.results[path].url else { return "" }
         return url
     }
