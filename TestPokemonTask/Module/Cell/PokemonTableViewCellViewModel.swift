@@ -7,45 +7,31 @@
 
 import UIKit
 
-class PokemonTableViewCellViewModel: PokemonTableViewCellViewModelProtocol {
+class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProtocol {
    
     //MARK: - properties
     var delegate: PokemonTableViewCellViewModelDelegate?
-    var networkService = NetworkingService()
-    var pokemonEntity: PokemonDitails? {
+    private var networkService = NetworkingService()
+    var imageDowloadService: ImageDownloadService?
+    
+    var pokemonEntity: PokemonDetails? {
         didSet {
-            delegate?.test()
+            delegate?.getPokemonEntity(entity: pokemonEntity!)
+            delegate?.setupImage()
         }
     }
     
     //MARK: - Methods
-    func getPokemonDitail(with url: String) {
-        networkService.getDitailDataWithUrl(url: url) { result in
+    func getPokemonDetail(with url: String) {
+        networkService.getDetailDataWithUrl(url: url) { result in
             switch result {
             case .failure(let error):
                 debugPrint(error.localizedDescription)
             case .success(let details):
                 self.pokemonEntity = details
+               
             }
         }
-    }
-    
-    func getPokemonName() -> String {
-        guard let name = pokemonEntity?.name else { return "" }
-        return name
-    }
-    
-    func getPokemonSpriteLink() -> String {
-        guard let link = pokemonEntity?.sprites.frontDefault else { return "" }
-        return link
-    }
-    
-    func getImage() {
-        //
-    }
-    
-    func cancel() {
-        //
     }
 }
 

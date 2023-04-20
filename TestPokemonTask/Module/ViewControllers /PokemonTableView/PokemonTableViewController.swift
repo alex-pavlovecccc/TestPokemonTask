@@ -62,7 +62,7 @@ extension PokemonTableViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCells(type: PokemonTableViewCell.self, indexPath: indexPath)
-        cell.viewModel.getPokemonDitail(with: self.viewModel.getUrlForDitails(for: indexPath.row))
+        cell.viewModel.getPokemonDetail(with: self.viewModel.getUrlForDetails(for: indexPath.row))
         return cell
     }
     

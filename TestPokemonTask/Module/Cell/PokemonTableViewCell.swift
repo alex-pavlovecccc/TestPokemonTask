@@ -8,7 +8,7 @@
 import UIKit
 
 class PokemonTableViewCell: UITableViewCell {
-
+    
     //MARK: - outlet
     @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var pokemonImage: UIImageView!
@@ -16,7 +16,13 @@ class PokemonTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     var viewModel: PokemonTableViewCellViewModelProtocol = PokemonTableViewCellViewModel()
-
+    var pokemonEntity: PokemonDetails? {
+        didSet{
+            self.nameLabel.text = pokemonEntity?.name ?? ""
+        }
+    }
+    
+    private var imageDownLoadService = ImageDownloadService()
     //MARK: - init
     
     override func awakeFromNib() {
@@ -40,9 +46,16 @@ class PokemonTableViewCell: UITableViewCell {
 
 //MARK: - extension 
 extension PokemonTableViewCell: PokemonTableViewCellViewModelDelegate {
-    func test() {
-        guard let name = self.viewModel.pokemonEntity?.name  else { return }
-        self.nameLabel.text = name
+    func getPokemonEntity(entity: PokemonDetails) {
+        self.pokemonEntity = entity
+    }
+
+    func setupImage() {
+        guard let strUrl = pokemonEntity?.sprites.frontDefault else { return }
+        let url = URL(string: strUrl)
+        self.imageDownLoadService.load(url) { [weak self] image in
+            self?.pokemonImage.image = image
+        }
     }
 }
 

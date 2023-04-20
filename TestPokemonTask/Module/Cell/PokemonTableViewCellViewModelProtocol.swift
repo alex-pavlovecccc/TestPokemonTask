@@ -7,12 +7,8 @@
 
 import UIKit
 
-protocol PokemonTableViewCellViewModelProtocol {
+protocol PokemonTableViewCellViewModelProtocol: NSObject {
     var delegate: PokemonTableViewCellViewModelDelegate? { get set }
-    var pokemonEntity: PokemonDitails? { get set }
-    func getPokemonDitail(with url: String)
-    func getPokemonName() -> String
-    func getPokemonSpriteLink() -> String
-    func getImage()
-    func cancel() 
+    var pokemonEntity: PokemonDetails? { get set }
+    func getPokemonDetail(with url: String)
 }
