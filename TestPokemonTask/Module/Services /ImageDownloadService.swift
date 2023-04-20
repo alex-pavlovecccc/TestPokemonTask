@@ -9,24 +9,20 @@ import UIKit
 
 final class ImageDownloadService {
     
-    //MARK: - Properties
+    
     private var downloadTask: DispatchWorkItem?
     
-    //MARK: - method
-    func imageDownloadWithUrl(url: String, complition: @escaping(UIImage) -> Void) {
-        let url = URL(string: url)
-        
+    func load(_ url: URL?, completion: @escaping (UIImage) -> Void) {
         guard let url = url else { return }
         
-        let downloadTask = DispatchWorkItem(qos: .userInitiated) {
+        let downloadTask = DispatchWorkItem(qos: .userInitiated, block: {
             if let data = try? Data(contentsOf: url),
                let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                        complition(image)
-                    }
+                    completion(image)
                 }
-        }
-        
+            }
+        })
         DispatchQueue.global(qos: .userInitiated).async(execute: downloadTask)
         self.downloadTask = downloadTask
     }
