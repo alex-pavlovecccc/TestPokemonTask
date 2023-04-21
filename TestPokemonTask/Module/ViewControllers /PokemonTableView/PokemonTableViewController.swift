@@ -67,10 +67,14 @@ extension PokemonTableViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return Constants.heightForCell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let nextVC = DetailsViewController()
+        nextVC.viewModel.getPokemonDetailsWith(url:self.viewModel.getUrlForDetails(for: indexPath.row))
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
