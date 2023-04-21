@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITableView {
-    
     func dequeueReusableCells<CellType>(type: CellType.Type, indexPath: IndexPath) -> CellType {
         self.dequeueReusableCell(withIdentifier: "\(CellType.self)", for: indexPath) as! CellType
     }
