@@ -15,7 +15,6 @@ struct PokemonEntity: Codable {
     var url: String
 }
 
-
 struct PokemonDetails: Codable {
     let height: Int
     let name: String

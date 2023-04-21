@@ -21,13 +21,8 @@ class PokemonViewModel: PokemonViewModelProtocol {
     
     //MARK: - Conputed properties
     var getPokemonCount: Int {
-        get {
-            if let count = pokemonEntites?.results.count {
-                return count
-            } else {
-                return 0
-            }
-        }
+        guard let count = pokemonEntites?.results.count else { return 0 }
+        return count
     }
     
     //MARK: - methods

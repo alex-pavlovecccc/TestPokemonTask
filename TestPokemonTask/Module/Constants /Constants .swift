@@ -13,4 +13,5 @@ final class Constants {
     static private(set) var offsetForTop: CGFloat = 200
     static private(set) var height: CGFloat = 200
     static private(set) var width: CGFloat = 200
+    static private(set) var heightForCell: CGFloat = 120 
 }
