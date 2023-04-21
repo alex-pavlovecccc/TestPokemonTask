@@ -46,16 +46,12 @@ class PokemonTableViewCell: UITableViewCell {
 
 //MARK: - extension 
 extension PokemonTableViewCell: PokemonTableViewCellViewModelDelegate {
+    func setupImage(image: UIImage) {
+        self.pokemonImage.image = image
+    }
+    
     func getPokemonEntity(entity: PokemonDetails) {
         self.pokemonEntity = entity
-    }
-
-    func setupImage() {
-        guard let strUrl = pokemonEntity?.sprites.frontDefault else { return }
-        let url = URL(string: strUrl)
-        self.imageDownLoadService.load(url) { [weak self] image in
-            self?.pokemonImage.image = image
-        }
     }
 }
 

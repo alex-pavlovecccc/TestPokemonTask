@@ -10,5 +10,6 @@ import UIKit
 protocol PokemonTableViewCellViewModelProtocol: NSObject {
     var delegate: PokemonTableViewCellViewModelDelegate? { get set }
     var pokemonEntity: PokemonDetails? { get set }
+    func getImage() 
     func getPokemonDetail(with url: String)
 }

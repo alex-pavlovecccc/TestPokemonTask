@@ -12,12 +12,13 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
     //MARK: - properties
     var delegate: PokemonTableViewCellViewModelDelegate?
     private var networkService = NetworkingService()
-    var imageDowloadService: ImageDownloadService?
+    private var imageDownloadService = ImageDownloadService()
     
     var pokemonEntity: PokemonDetails? {
         didSet {
-            delegate?.getPokemonEntity(entity: pokemonEntity!)
-            delegate?.setupImage()
+            guard let entity = pokemonEntity else { return }
+            delegate?.getPokemonEntity(entity: entity)
+            self.getImage()
         }
     }
     
@@ -29,8 +30,16 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
                 debugPrint(error.localizedDescription)
             case .success(let details):
                 self.pokemonEntity = details
-               
             }
+        }
+    }
+    
+    func getImage() {
+        guard let stringToUrl = pokemonEntity?.sprites.frontDefault else { return }
+        let url = URL(string: stringToUrl)
+        
+        self.imageDownloadService.load(url) { [weak self] image in
+            self?.delegate?.setupImage(image: image)
         }
     }
 }

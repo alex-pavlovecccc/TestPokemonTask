@@ -8,6 +8,6 @@
 import UIKit
 
 protocol PokemonTableViewCellViewModelDelegate {
-    func setupImage()
+    func setupImage(image: UIImage)
     func getPokemonEntity(entity: PokemonDetails) 
 }
