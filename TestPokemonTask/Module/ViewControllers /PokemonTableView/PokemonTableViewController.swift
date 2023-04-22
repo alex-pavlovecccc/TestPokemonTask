@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonTableViewController: UIViewController {
+class PokemonTableViewController: UIViewController, AlertHandler {
     
     //MARK: - properties
     
@@ -31,12 +31,23 @@ class PokemonTableViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(xibCell, forCellReuseIdentifier: "PokemonTableViewCell")
+        self.welcomeLabel.text = ""
         return tableView
     }()
 
+    private lazy var welcomeLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "The internet connection has been lost, but if you get bored, you'll check out your most favorite heroes in favorite view"
+        label.numberOfLines = 3
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }()
+    
     //MARK: - Methods
     private func setupGUI() {
         self.view.addSubview(self.pokemonListTableView)
+        self.view.addSubview(self.welcomeLabel)
         self.navigationItem.title = "Pokemon list"
     }
     
@@ -51,7 +62,13 @@ class PokemonTableViewController: UIViewController {
                                      self.pokemonListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
                                      self.pokemonListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
                                      self.pokemonListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor)])
+        
+        NSLayoutConstraint.activate([self.welcomeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                     self.welcomeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                                     self.welcomeLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: Constants.offset),
+                                     self.welcomeLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -Constants.offset)])
     }
+
 }
 
 //MARK: - extension
@@ -79,6 +96,10 @@ extension PokemonTableViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension PokemonTableViewController: PokemonViewModelDelegate {
+    func showPokemonTableViewConstrollerAlert(title: String, message: String) {
+        showAlert(title: title, message: message)
+    }
+    
     func reloadData() {
         self.pokemonListTableView.reloadData()
     }
