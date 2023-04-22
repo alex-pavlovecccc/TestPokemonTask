@@ -29,16 +29,28 @@ class DetailsPokemonViewController: UIViewController {
     @IBOutlet weak var widthLabel: UILabel!
     @IBOutlet weak var heightLable: UILabel!
     @IBOutlet weak var pokemonImage: UIImageView!
-   
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var abilityView: UIView!
+    @IBOutlet weak var weightView: UIView!
+    @IBOutlet weak var heightView: UIView!
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bind()
+        self.setAppearance()
     }
 
     //MARK: - methods
-    func bind() {
+    private func bind() {
         self.viewModel.delegate = self
+    }
+    
+    private func setAppearance() {
+        self.abilityView.layer.cornerRadius = Constants.cornerRadius
+        self.weightView.layer.cornerRadius = Constants.cornerRadius
+        self.heightView.layer.cornerRadius = Constants.cornerRadius
+        self.likeButton.layer.cornerRadius = Constants.cornerRadius
     }
 }
 
