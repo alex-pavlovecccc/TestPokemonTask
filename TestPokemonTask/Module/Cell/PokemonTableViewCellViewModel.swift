@@ -13,6 +13,7 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
     var delegate: PokemonTableViewCellViewModelDelegate?
     private var networkService = NetworkingService()
     private var imageDownloadService = ImageDownloadService()
+  //  private var imageCacheService = ImageCacheService()
     
     var pokemonEntity: PokemonDetails? {
         didSet {
