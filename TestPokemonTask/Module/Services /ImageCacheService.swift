@@ -8,7 +8,9 @@
 import UIKit
 
 final class ImageCacheService {
-    let shared = ImageCacheService()
+    
+    //MARK: - singleton
+    static let shared = ImageCacheService()
     
     private let cache: NSCache<NSString, UIImage> = {
         let cache = NSCache<NSString, UIImage>()
@@ -17,11 +19,10 @@ final class ImageCacheService {
         return cache
     }()
     
-    func save(url: String?, image: UIImage?) {
-        guard let url = url else { return }
+    //MARK: - methods
+    func save(url: String, image: UIImage?) {
         guard let image = image else { return }
-        
-        self.cache.setObject(image, forKey: NSString(string: url))
+        self.cache.setObject(image, forKey: url as NSString)
         
     }
     
