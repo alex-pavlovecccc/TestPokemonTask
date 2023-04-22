@@ -8,7 +8,10 @@
 import UIKit
 
 protocol DetailsPokemonViewControllerProtocol: NSObject {
-    
+    var delegate: DetailsPokemonViewControllerDelegate? { get set }
+    var getPokemonName: String? { get }
+    func getPokemonDetailsWith(url: String)
+    func getImage()
 }
 
 
