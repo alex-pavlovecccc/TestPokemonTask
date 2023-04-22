@@ -5,9 +5,9 @@
 //  Created by Alexander Pavlovets on 18.04.2023.
 //
 
-import Foundation
+import UIKit
 
-final class NetworkingService {
+class NetworkingService: NSObject {
 
     private let api = API()
     
@@ -90,11 +90,32 @@ final class NetworkingService {
     }
     
     //MARK: - error enum
-    enum ResponseError: Error {
+    enum ResponseError: Error{
         case URLError
         case invalidResponse
         case invalidData
         case error
         case decodingError
+        
+        func getDescription() -> String {
+            switch self {
+                
+            case .URLError:
+                return ""
+            case .invalidResponse:
+                return ""
+            case .invalidData:
+                return ""
+            case .error:
+                return "the internet connect losted"
+            case .decodingError:
+                return ""
+            }
+        }
     }
 }
+
+
+
+
+
