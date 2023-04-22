@@ -12,7 +12,7 @@ class PokemonViewModel: PokemonViewModelProtocol {
     //MARK: - properties
     var delegate: PokemonViewModelDelegate?
     var networkService = NetworkingService()
-    
+  
     var pokemonEntites: PokemonResult? {
         didSet {
             delegate?.reloadData()
@@ -24,7 +24,7 @@ class PokemonViewModel: PokemonViewModelProtocol {
         guard let count = pokemonEntites?.results.count else { return 0 }
         return count
     }
-    
+
     //MARK: - methods
     func getUrlForDetails(for path: Int) -> String {
         guard let url = pokemonEntites?.results[path].url else { return "" }
@@ -35,7 +35,7 @@ class PokemonViewModel: PokemonViewModelProtocol {
         networkService.getDataWithDataTask { result in
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                self.delegate?.showPokemonTableViewConstrollerAlert(title: "OMG", message: "\(error.getDescription())")
             case .success(let list):
                 self.pokemonEntites = list
             }
