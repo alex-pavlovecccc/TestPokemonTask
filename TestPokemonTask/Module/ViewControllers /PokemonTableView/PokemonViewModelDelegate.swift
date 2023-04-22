@@ -8,5 +8,6 @@
 import UIKit
 
 protocol PokemonViewModelDelegate {
-    func reloadData() 
+    func reloadData()
+    func showPokemonTableViewConstrollerAlert(title: String, message: String)
 }
