@@ -7,6 +7,21 @@
 
 import Foundation
 
-final class SavedViewControllerViewModel: NSObject {
+final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModelProtocol {
     
+    //MARK: - Properties
+    var delegate: SavedViewControllerViewModelDelegate? {
+        didSet {
+            self.getPokemonsWithCoreData()
+        }
+    }
+    
+    var getPokemonsCount: Int?
+    
+    var pokemons: [Pokemons]?
+    
+    //MARK: - method
+    func getPokemonsWithCoreData() {
+        
+    }
 }
