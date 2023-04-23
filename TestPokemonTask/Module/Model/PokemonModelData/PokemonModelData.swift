@@ -4,8 +4,9 @@
 //
 //  Created by Alexander Pavlovets on 18.04.2023.
 //
-
 import Foundation
+import UIKit
+import CoreData
 
 struct PokemonResult: Codable{
     var results: [PokemonEntity]
@@ -22,6 +23,14 @@ struct PokemonDetails: Codable {
     let weight: Int?
     let species: PokemonSpecies?
     let types: [PokemonType]?
+    
+    func addCoreDataPokemon(context: NSManagedObjectContext) {
+        guard let pokemon = Pokemons(moc: context) else { return  }
+        pokemon.name = name
+        pokemon.height = String(height ?? 0)
+        pokemon.weight = String(weight ?? 0)
+        pokemon.imageLink = sprites?.frontDefault ?? ""
+    }
 }
 
 struct Sprites: Codable {
