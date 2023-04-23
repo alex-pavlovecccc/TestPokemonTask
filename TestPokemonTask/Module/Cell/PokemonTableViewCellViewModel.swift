@@ -36,7 +36,7 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
     }
     
     func getImage() {
-        guard let stringToUrl = pokemonEntity?.sprites.frontDefault else { return }
+        guard let stringToUrl = pokemonEntity?.sprites?.frontDefault else { return }
         let url = URL(string: stringToUrl)
         
         self.imageDownloadService.load(url) { [weak self] image in

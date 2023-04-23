@@ -1,5 +1,5 @@
 //
-//  Pokemon.swift
+//  PokemonModelData.swift
 //  TestPokemonTask
 //
 //  Created by Alexander Pavlovets on 18.04.2023.
@@ -16,12 +16,12 @@ struct PokemonEntity: Codable {
 }
 
 struct PokemonDetails: Codable {
-    let height: Int
-    let name: String
-    let sprites: Sprites
-    let weight: Int
-    let species: PokemonSpecies
-    let types: [PokemonType]
+    let height: Int?
+    let name: String?
+    let sprites: Sprites?
+    let weight: Int?
+    let species: PokemonSpecies?
+    let types: [PokemonType]?
 }
 
 struct Sprites: Codable {

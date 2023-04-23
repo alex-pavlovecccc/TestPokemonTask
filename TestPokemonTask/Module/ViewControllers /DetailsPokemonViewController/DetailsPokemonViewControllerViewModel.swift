@@ -41,7 +41,7 @@ final class DetailsPokemonViewControllerViewModel: NSObject, DetailsPokemonViewC
     }
     
     func getImage() {
-        guard let strUrl = pokemontEntity?.sprites.frontDefault else { return }
+        guard let strUrl = pokemontEntity?.sprites?.frontDefault else { return }
         let url = URL(string: strUrl)
         imageDownLoadService.load(url) { image in
             self.delegate?.setImage(image: image)
