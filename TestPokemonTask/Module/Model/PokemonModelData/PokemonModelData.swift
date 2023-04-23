@@ -17,18 +17,18 @@ struct PokemonEntity: Codable {
 }
 
 struct PokemonDetails: Codable {
-    let height: Int?
+    let height: Int
     let name: String?
     let sprites: Sprites?
-    let weight: Int?
+    let weight: Int
     let species: PokemonSpecies?
     let types: [PokemonType]?
     
     func addCoreDataPokemon(context: NSManagedObjectContext) {
         guard let pokemon = Pokemons(moc: context) else { return  }
         pokemon.name = name
-        pokemon.height = String(height ?? 0)
-        pokemon.weight = String(weight ?? 0)
+        pokemon.height = String(height)
+        pokemon.weight = String(weight )
         pokemon.imageLink = sprites?.frontDefault ?? ""
     }
 }
