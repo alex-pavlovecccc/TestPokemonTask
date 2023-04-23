@@ -33,6 +33,10 @@
 		E28A3BF629F59EC4006BC0D9 /* Pokemons+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3BF429F59EC4006BC0D9 /* Pokemons+CoreDataClass.swift */; };
 		E28A3BF729F59EC4006BC0D9 /* Pokemons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3BF529F59EC4006BC0D9 /* Pokemons+CoreDataProperties.swift */; };
 		E28A3BFD29F5A102006BC0D9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3BFC29F5A102006BC0D9 /* CoreDataService.swift */; };
+		E28A3C0029F5A409006BC0D9 /* SavedViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3BFF29F5A409006BC0D9 /* SavedViewController .swift */; };
+		E28A3C0229F5A41C006BC0D9 /* SavedViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3C0129F5A41C006BC0D9 /* SavedViewControllerViewModel.swift */; };
+		E28A3C0429F5A434006BC0D9 /* SavedViewControllerViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3C0329F5A434006BC0D9 /* SavedViewControllerViewModelProtocol.swift */; };
+		E28A3C0629F5A448006BC0D9 /* SavedViewControllerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A3C0529F5A448006BC0D9 /* SavedViewControllerViewModelDelegate.swift */; };
 		E296D4F029EECBCF001435A2 /* MainTabBarController .swift in Sources */ = {isa = PBXBuildFile; fileRef = E296D4EF29EECBCF001435A2 /* MainTabBarController .swift */; };
 		E2EAC36329EEB2F700A2B7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAC36229EEB2F700A2B7EC /* AppDelegate.swift */; };
 		E2EAC36529EEB2F700A2B7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAC36429EEB2F700A2B7EC /* SceneDelegate.swift */; };
@@ -67,6 +71,10 @@
 		E28A3BF429F59EC4006BC0D9 /* Pokemons+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemons+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E28A3BF529F59EC4006BC0D9 /* Pokemons+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemons+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E28A3BFC29F5A102006BC0D9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		E28A3BFF29F5A409006BC0D9 /* SavedViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedViewController .swift"; sourceTree = "<group>"; };
+		E28A3C0129F5A41C006BC0D9 /* SavedViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E28A3C0329F5A434006BC0D9 /* SavedViewControllerViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewControllerViewModelProtocol.swift; sourceTree = "<group>"; };
+		E28A3C0529F5A448006BC0D9 /* SavedViewControllerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewControllerViewModelDelegate.swift; sourceTree = "<group>"; };
 		E296D4EF29EECBCF001435A2 /* MainTabBarController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabBarController .swift"; sourceTree = "<group>"; };
 		E2EAC35F29EEB2F700A2B7EC /* TestPokemonTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPokemonTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EAC36229EEB2F700A2B7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,9 +148,21 @@
 			path = CoreDataModelData;
 			sourceTree = "<group>";
 		};
+		E28A3BFE29F5A3E9006BC0D9 /* SavedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E28A3BFF29F5A409006BC0D9 /* SavedViewController .swift */,
+				E28A3C0129F5A41C006BC0D9 /* SavedViewControllerViewModel.swift */,
+				E28A3C0329F5A434006BC0D9 /* SavedViewControllerViewModelProtocol.swift */,
+				E28A3C0529F5A448006BC0D9 /* SavedViewControllerViewModelDelegate.swift */,
+			);
+			path = SavedViewController;
+			sourceTree = "<group>";
+		};
 		E296D4E429EEC8BC001435A2 /* ViewControllers  */ = {
 			isa = PBXGroup;
 			children = (
+				E28A3BFE29F5A3E9006BC0D9 /* SavedViewController */,
 				E28A3B2329F465AA006BC0D9 /* DetailsPokemonViewController */,
 				E296D4EA29EEC960001435A2 /* PokemonTableView */,
 				E296D4E929EEC93E001435A2 /* MainTabBarController */,
@@ -329,6 +349,7 @@
 				E21ED96F29F003CB00036B89 /* PokemonTableViewCellViewModelProtocol.swift in Sources */,
 				E2EAC36329EEB2F700A2B7EC /* AppDelegate.swift in Sources */,
 				E28A3B2929F46E1E006BC0D9 /* DetailsPokemonViewControllerViewModel.swift in Sources */,
+				E28A3C0229F5A41C006BC0D9 /* SavedViewControllerViewModel.swift in Sources */,
 				E217853929EED8DA00832287 /* PokemonModelData.swift in Sources */,
 				E217853329EED31000832287 /* PokemonViewModel.swift in Sources */,
 				E247FA9329F1F130000A8E7E /* Constants .swift in Sources */,
@@ -337,6 +358,7 @@
 				E21ED96929EFFB8400036B89 /* ImageDownloadService.swift in Sources */,
 				E217853B29EEDAA700832287 /* NetworkingService.swift in Sources */,
 				E217853D29EEDAB900832287 /* API.swift in Sources */,
+				E28A3C0029F5A409006BC0D9 /* SavedViewController .swift in Sources */,
 				E28A3BF729F59EC4006BC0D9 /* Pokemons+CoreDataProperties.swift in Sources */,
 				E217853729EED33A00832287 /* PokemonViewModelDelegate.swift in Sources */,
 				E217853129EED2CE00832287 /* PokemonTableViewController.swift in Sources */,
@@ -348,9 +370,11 @@
 				E21ED96B29F003B200036B89 /* PokemonTableViewCellViewModel.swift in Sources */,
 				E28A3BF329F59E49006BC0D9 /* PokemonApp.xcdatamodeld in Sources */,
 				E21ED96729EEF0D600036B89 /* TableView + Extension.swift in Sources */,
+				E28A3C0629F5A448006BC0D9 /* SavedViewControllerViewModelDelegate.swift in Sources */,
 				E21ED96D29F003C000036B89 /* PokemonTableViewCellViewModelDelegate.swift in Sources */,
 				E2EAC36529EEB2F700A2B7EC /* SceneDelegate.swift in Sources */,
 				E217854029EEEA2400832287 /* PokemonTableViewCell.swift in Sources */,
+				E28A3C0429F5A434006BC0D9 /* SavedViewControllerViewModelProtocol.swift in Sources */,
 				E28A3B1929F3D801006BC0D9 /* Allert + Handler .swift in Sources */,
 				E28A3B2629F465D2006BC0D9 /* DetailsPokemonViewController.swift in Sources */,
 			);
