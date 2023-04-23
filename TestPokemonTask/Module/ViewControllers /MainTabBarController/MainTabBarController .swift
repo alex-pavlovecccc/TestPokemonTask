@@ -23,6 +23,6 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setViewControllers() {
-        self.viewControllers = [generateViewControllers(viewController: PokemonTableViewController(), isLargeTitle: true)]
+        self.viewControllers = [generateViewControllers(viewController: PokemonTableViewController(), isLargeTitle: true), generateViewControllers(viewController: SavedViewController(), isLargeTitle: true)]
     }
 }
