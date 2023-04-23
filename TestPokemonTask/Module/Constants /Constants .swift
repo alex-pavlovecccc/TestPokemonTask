@@ -14,5 +14,6 @@ final class Constants {
     static private(set) var height: CGFloat = 200
     static private(set) var width: CGFloat = 200
     static private(set) var heightForCell: CGFloat = 120
-    static private(set) var cornerRadius: CGFloat = 10
+    static private(set) var cornerRadius: CGFloat = 20
+    static private(set) var doubleCornerRadius: CGFloat = 40
 }
