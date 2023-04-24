@@ -22,12 +22,19 @@ class PokemonTableViewCell: UITableViewCell {
         }
     }
     
+    var pokemons: Pokemons?{
+        didSet {
+            self.nameLabel.text = pokemons?.name ?? " "
+        }
+    }
+    
     private var imageDownLoadService = ImageDownloadService()
     //MARK: - init
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bind()
+        self.contentViewApperance()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,7 +43,7 @@ class PokemonTableViewCell: UITableViewCell {
     
     //MARK: - Method
     private func contentViewApperance() {
-        self.cellContentView.layer.cornerRadius = self.cellContentView.bounds.height / 2
+        self.cellContentView.layer.cornerRadius = Constants.doubleCornerRadius
     }
     
     private func bind() {
@@ -46,9 +53,15 @@ class PokemonTableViewCell: UITableViewCell {
 
 //MARK: - extension 
 extension PokemonTableViewCell: PokemonTableViewCellViewModelDelegate {
+    func getPokemonEntityWithCoreData(entity: Pokemons) {
+        self.pokemons = entity
+    }
+    
     func setupImage(image: UIImage) {
         self.pokemonImage.image = image
     }
+    
+    
     
     func getPokemonEntity(entity: PokemonDetails) {
         self.pokemonEntity = entity
