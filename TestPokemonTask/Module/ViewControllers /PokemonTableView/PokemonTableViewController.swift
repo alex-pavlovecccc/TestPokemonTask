@@ -30,6 +30,7 @@ class PokemonTableViewController: UIViewController, AlertHandler {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
+       
         tableView.register(xibCell, forCellReuseIdentifier: "PokemonTableViewCell")
         self.welcomeLabel.text = ""
         return tableView
@@ -46,6 +47,7 @@ class PokemonTableViewController: UIViewController, AlertHandler {
     
     //MARK: - Methods
     private func setupGUI() {
+        self.view.backgroundColor = .white
         self.view.addSubview(self.pokemonListTableView)
         self.view.addSubview(self.welcomeLabel)
         self.navigationItem.title = "Pokemon list"
@@ -86,6 +88,7 @@ extension PokemonTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.heightForCell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let nextVC = DetailsPokemonViewController()
@@ -94,6 +97,7 @@ extension PokemonTableViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+//MARK: - Extension
 extension PokemonTableViewController: PokemonViewModelDelegate {
     func showPokemonTableViewConstrollerAlert(title: String, message: String) {
         showAlert(title: title, message: message)
