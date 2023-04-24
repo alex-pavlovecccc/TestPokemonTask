@@ -8,19 +8,30 @@
 import UIKit
 
 class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProtocol {
-   
+
     //MARK: - properties
     var delegate: PokemonTableViewCellViewModelDelegate?
     private var networkService = NetworkingService()
     private var imageDownloadService = ImageDownloadService()
-  //  private var imageCacheService = ImageCacheService()
-    
+
     var pokemonEntity: PokemonDetails? {
         didSet {
             guard let entity = pokemonEntity else { return }
             delegate?.getPokemonEntity(entity: entity)
             self.getImage()
         }
+    }
+
+    var pokemons: Pokemons? {
+        didSet{
+            guard let pokemons = pokemons else { return }
+            delegate?.getPokemonEntityWithCoreData(entity: pokemons)
+            self.getImageWithCoreData()
+        }
+    }
+    
+    func getPokemons(entity: Pokemons) {
+        self.pokemons = entity
     }
     
     //MARK: - Methods
@@ -34,7 +45,7 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
             }
         }
     }
-    
+  
     func getImage() {
         guard let stringToUrl = pokemonEntity?.sprites?.frontDefault else { return }
         let url = URL(string: stringToUrl)
@@ -43,5 +54,14 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
             self?.delegate?.setupImage(image: image)
         }
     }
+    
+    func getImageWithCoreData() {
+        guard let stringToUrl = pokemons?.imageLink else { return }
+        
+        let url = URL(string: stringToUrl) 
+        self.imageDownloadService.load(url) { [weak self]image in
+            self?.delegate?.setupImage(image: image)
+        }
+    }   
 }
 
