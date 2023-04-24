@@ -10,4 +10,5 @@ import UIKit
 protocol DetailsPokemonViewControllerDelegate {
     func setImage(image: UIImage)
     func getPokemonEntity(entity: PokemonDetails)
+    func showPokemonDetailsAlert(title: String, message: String)
 }
