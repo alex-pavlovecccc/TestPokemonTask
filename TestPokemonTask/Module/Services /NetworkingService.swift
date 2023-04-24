@@ -107,7 +107,7 @@ class NetworkingService: NSObject {
             case .invalidData:
                 return ""
             case .error:
-                return "the internet connect losted"
+                return "lost internet connect"
             case .decodingError:
                 return ""
             }
