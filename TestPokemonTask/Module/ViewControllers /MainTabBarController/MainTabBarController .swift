@@ -20,6 +20,7 @@ final class MainTabBarController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.prefersLargeTitles = isLargeTitle
         navigationController.tabBarItem = UITabBarItem(title: title, image: image, tag: tag)
+        navigationController.navigationBar.tintColor = .black
         return navigationController
     }
     
