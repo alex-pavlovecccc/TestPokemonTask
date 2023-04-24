@@ -8,12 +8,12 @@
 import UIKit
 
 class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProtocol {
-
+    
     //MARK: - properties
     var delegate: PokemonTableViewCellViewModelDelegate?
     private var networkService = NetworkingService()
     private var imageDownloadService = ImageDownloadService()
-
+    
     var pokemonEntity: PokemonDetails? {
         didSet {
             guard let entity = pokemonEntity else { return }
@@ -21,7 +21,7 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
             self.getImage()
         }
     }
-
+    
     var pokemons: Pokemons? {
         didSet{
             guard let pokemons = pokemons else { return }
@@ -45,7 +45,7 @@ class PokemonTableViewCellViewModel: NSObject, PokemonTableViewCellViewModelProt
             }
         }
     }
-  
+    
     func getImage() {
         guard let stringToUrl = pokemonEntity?.sprites?.frontDefault else { return }
         let url = URL(string: stringToUrl)

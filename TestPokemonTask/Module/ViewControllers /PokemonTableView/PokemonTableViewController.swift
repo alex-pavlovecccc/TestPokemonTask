@@ -10,10 +10,9 @@ import UIKit
 class PokemonTableViewController: UIViewController, AlertHandler {
     
     //MARK: - properties
-    
     private var viewModel: PokemonViewModelProtocol = PokemonViewModel()
     
-    //MARK: - init 
+    //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupGUI()
@@ -30,12 +29,10 @@ class PokemonTableViewController: UIViewController, AlertHandler {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-       
         tableView.register(xibCell, forCellReuseIdentifier: "PokemonTableViewCell")
-        self.welcomeLabel.text = ""
         return tableView
     }()
-
+    
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "The internet connection has been lost, but if you get bored, you'll check out your most favorite heroes in favorite view"
@@ -70,7 +67,7 @@ class PokemonTableViewController: UIViewController, AlertHandler {
                                      self.welcomeLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: Constants.offset),
                                      self.welcomeLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -Constants.offset)])
     }
-
+    
 }
 
 //MARK: - extension
@@ -104,6 +101,7 @@ extension PokemonTableViewController: PokemonViewModelDelegate {
     }
     
     func reloadData() {
+        self.welcomeLabel.text = " "
         self.pokemonListTableView.reloadData()
     }
 }

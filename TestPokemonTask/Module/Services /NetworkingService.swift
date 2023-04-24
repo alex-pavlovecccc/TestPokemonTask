@@ -8,7 +8,7 @@
 import UIKit
 
 class NetworkingService: NSObject {
-
+    
     private let api = API()
     
     //MARK: - method

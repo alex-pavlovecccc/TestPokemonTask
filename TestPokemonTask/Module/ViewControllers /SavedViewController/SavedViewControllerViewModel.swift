@@ -31,6 +31,6 @@ final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModel
             if let result = try? CoreDataService.managedObjectContext.fetch(request) {
                 self.pokemons = result
             }
-       }
+        }
     }
 }

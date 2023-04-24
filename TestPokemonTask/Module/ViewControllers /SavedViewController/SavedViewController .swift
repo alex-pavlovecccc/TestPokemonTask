@@ -50,6 +50,7 @@ final class SavedViewController: UIViewController {
     }
 }
 
+//MARK: - Extension
 extension SavedViewController: SavedViewControllerViewModelDelegate {
     func reloadData() {
         self.pokemonTableView.reloadData()

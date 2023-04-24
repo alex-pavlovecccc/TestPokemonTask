@@ -8,9 +8,9 @@
 import UIKit
 
 final class DetailsPokemonViewControllerViewModel: NSObject, DetailsPokemonViewControllerProtocol {
+    
     //MARK: - property
     var delegate: DetailsPokemonViewControllerDelegate?
-    
     var imageDownLoadService = ImageDownloadService()
     
     private var pokemontEntity: PokemonDetails? {
@@ -20,14 +20,15 @@ final class DetailsPokemonViewControllerViewModel: NSObject, DetailsPokemonViewC
             self.getImage()
         }
     }
+    
     private var networkingService: NetworkingService = NetworkingService()
-
+    
     //MARK: - computed properties
     var getPokemonName: String? {
         guard let name = pokemontEntity?.name else { return ""}
         return name
     }
-
+    
     //MARK: - methods
     func getPokemonDetailsWith(url: String) {
         networkingService.getDetailDataWithUrl(url: url, complition: { result  in

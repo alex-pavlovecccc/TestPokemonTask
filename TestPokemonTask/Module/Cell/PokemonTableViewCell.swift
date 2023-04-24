@@ -29,8 +29,8 @@ class PokemonTableViewCell: UITableViewCell {
     }
     
     private var imageDownLoadService = ImageDownloadService()
-    //MARK: - init
     
+    //MARK: - init
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bind()
