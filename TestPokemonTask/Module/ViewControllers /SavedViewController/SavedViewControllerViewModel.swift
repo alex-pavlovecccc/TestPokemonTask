@@ -10,7 +10,7 @@ import UIKit
 
 final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModelProtocol {
     
-    //MARK: - Properties
+    //MARK: - properties
     var delegate: SavedViewControllerViewModelDelegate? {
         didSet {
             self.getPokemonsWithCoreData()
@@ -18,13 +18,14 @@ final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModel
         }
     }
     
+    
     var pokemons: [Pokemons]? {
         didSet {
             self.delegate?.reloadData()
         }
     }
     
-    //MARK: - method
+    //MARK: - Methods 
     func getPokemonsWithCoreData() {
         let request = Pokemons.fetchRequest()
         DispatchQueue.main.async {

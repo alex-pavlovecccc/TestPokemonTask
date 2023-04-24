@@ -11,13 +11,18 @@ final class SavedViewController: UIViewController {
     
     //MARK: - ViewModel
     var viewModel: SavedViewControllerViewModelProtocol = SavedViewControllerViewModel()
-    
-    //MARK: - init
+
+    //MARK: - init/ life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bind()
         self.setupGUI()
         self.setupConstraints()
+    }
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.getPokemonsWithCoreData()
     }
     
     //MARK: - nib file
@@ -42,6 +47,7 @@ final class SavedViewController: UIViewController {
         self.view.addSubview(self.pokemonTableView)
         self.navigationItem.title = "Favorite"
     }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([self.pokemonTableView.topAnchor.constraint(equalTo: self.view.topAnchor),
                                      self.pokemonTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
