@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModelProtocol {
     
@@ -13,15 +14,23 @@ final class SavedViewControllerViewModel: NSObject, SavedViewControllerViewModel
     var delegate: SavedViewControllerViewModelDelegate? {
         didSet {
             self.getPokemonsWithCoreData()
+            
         }
     }
     
-    var getPokemonsCount: Int?
-    
-    var pokemons: [Pokemons]?
+    var pokemons: [Pokemons]? {
+        didSet {
+            self.delegate?.reloadData()
+        }
+    }
     
     //MARK: - method
     func getPokemonsWithCoreData() {
-        
+        let request = Pokemons.fetchRequest()
+        DispatchQueue.main.async {
+            if let result = try? CoreDataService.managedObjectContext.fetch(request) {
+                self.pokemons = result
+            }
+       }
     }
 }
