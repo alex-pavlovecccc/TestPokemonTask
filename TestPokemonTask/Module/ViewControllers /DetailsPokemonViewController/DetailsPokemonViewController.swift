@@ -20,6 +20,8 @@ class DetailsPokemonViewController: UIViewController, AlertHandler {
             self.heightLable.text = "\(height)"
             guard let weight = pokemonEntity?.weight else { return }
             self.widthLabel.text = "\(weight)"
+            guard let entity = pokemonEntity?.types?.first?.type.name else { return }
+            self.abilityLabel.text = entity
         }
     }
     
@@ -39,6 +41,7 @@ class DetailsPokemonViewController: UIViewController, AlertHandler {
         super.viewDidLoad()
         self.bind()
         self.setAppearance()
+        self.addTarger()
     }
     
     //MARK: - methods
@@ -52,7 +55,16 @@ class DetailsPokemonViewController: UIViewController, AlertHandler {
         self.weightView.layer.cornerRadius = Constants.cornerRadius
         self.heightView.layer.cornerRadius = Constants.cornerRadius
         self.likeButton.layer.cornerRadius = Constants.cornerRadius
+        self.navigationItem.titleView?.tintColor = UIColor.black
+    }
+    
+    private func addTarger() {
         self.likeButton.addTarget(self, action: #selector(likeButtonDidTap), for: .touchUpInside)
+    }
+    
+    
+    func showAlert() {
+        self.viewModel.delegate?.showPokemonDetailsAlert(title: "Great! ", message: "You have added a new Pokemon")
     }
     
     //MARK: - Gradient
@@ -74,7 +86,7 @@ class DetailsPokemonViewController: UIViewController, AlertHandler {
         pokemon.weight = String(pokemonEntity?.weight ?? 0)
         pokemon.height = String(pokemonEntity?.height ?? 0)
         CoreDataService.saveContext()
-        self.viewModel.delegate?.showPokemonDetailsAlert(title: "Great! ", message: "You have added a new Pokemon")
+        self.showAlert()
     }
 }
 
